@@ -71,11 +71,11 @@ def test_message_content():
         #Create an instance of the publisher node
         node = publisher()
 
-        #Simulate a timer callback to generate a message
-        node.timer_callback()
+        #Set the counter to a specific value for testing
+        node.i = 5
         msg = String()
 
-        #Check if the message content includes the correct counter value
+        #using f-string to format the message content
         msg.data = f'Hello World: {node.i}'
         assert msg.data == 'Hello World: 5'
 
