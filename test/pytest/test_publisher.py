@@ -83,3 +83,7 @@ def test_message_content():
     finally:
         #Shutdown ROS2 communication
         rclpy.shutdown()
+
+if __name__ == '__main__':
+    #Run the tests if the script is executed directly
+    pytest.main(['v'])
