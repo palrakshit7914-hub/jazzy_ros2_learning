@@ -8,7 +8,7 @@ This package includes minimalist Ros2 code to demonstrated important Ros2 concep
 
 ## Prerequisites
 
--Ros2 installed
+-Ros2 must be installed
 -python3
 -Created  a ROS2 Workspace ('ros2_ws')
 
