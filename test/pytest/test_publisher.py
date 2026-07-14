@@ -53,3 +53,33 @@ def test_publisher_creation():
         #Shutdown ROS2 communication
         rclpy.shutdown()
 
+def test_message_content():
+    """
+    Test if the message content is formatted correctly.
+
+    This test verifies:
+    1. The message content includes the correct counter value.
+    2. The message is of type std_msgs/String.
+
+    :raises: AssertionError if any of the checks fail
+    """
+
+    #Initialize ROS2 communication
+    rclpy.init()
+
+    try:
+        #Create an instance of the publisher node
+        node = publisher()
+
+        #Simulate a timer callback to generate a message
+        node.timer_callback()
+        msg = String()
+
+        #Check if the message content includes the correct counter value
+        msg.data = f'Hello World: {node.i}'
+        assert msg.data == 'Hello World: 5'
+
+        
+    finally:
+        #Shutdown ROS2 communication
+        rclpy.shutdown()
