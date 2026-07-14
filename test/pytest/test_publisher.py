@@ -45,7 +45,7 @@ def test_publisher_creation():
         assert node.get_name() == 'publisher_node', "Node name is not set correctly."
 
         #Check if the publisher object exists
-        assert hassattr(node, 'publisher_1'), "Publisher object does not exist."
+        assert hasattr(node, 'publisher_1'), "Publisher object does not exist."
 
         #Check if the topic name is correct
         assert node.publisher_1.topic_name == '/py_example_topic'."
