@@ -33,3 +33,23 @@ def test_publisher_creation():
 
     :raises: AssertionError if any of the checks fail
     """
+
+    #Initialize ROS2 communication
+    rclpy.init()
+
+    try:
+        #Create an instance of the publisher node
+        node = publisher()
+
+        #Check if the node name is set correctly
+        assert node.get_name() == 'publisher_node', "Node name is not set correctly."
+
+        #Check if the publisher object exists
+        assert hassattr(node, 'publisher_1'), "Publisher object does not exist."
+
+        #Check if the topic name is correct
+        assert node.publisher_1.topic_name == '/py_example_topic'."
+    finally:
+        #Shutdown ROS2 communication
+        rclpy.shutdown()
+
