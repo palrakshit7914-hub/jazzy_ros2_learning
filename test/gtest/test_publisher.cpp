@@ -46,6 +46,7 @@ protected:
 
 TEST_F(TestMinimalPublisher, TestNodeCreation)
 {
-    EXPECT_EQ(std::string(node->get_name()), std::string(""))
+    EXPECT_EQ(std::string(node->get_name()), std::string("minimal_cpp_publisher"));
+    
 }
 
