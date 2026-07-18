@@ -19,8 +19,8 @@ Publishing Topic
 """
 import pytest
 import rclpy
-from std_msgs import String
-from ros2_learning.pub.py import publisher
+from std_msgs.msg import String
+from ros2_learning.pub import publisher
 
 def test_publisher_creation():
     """
@@ -42,13 +42,13 @@ def test_publisher_creation():
         node = publisher()
 
         #Check if the node name is set correctly
-        assert node.get_name() == 'publisher_node', "Node name is not set correctly."
+        assert node.get_name() == 'publisher_node'
 
         #Check if the publisher object exists
-        assert hasattr(node, 'publisher_1'), "Publisher object does not exist."
+        assert hasattr(node, 'publisher_1')
 
         #Check if the topic name is correct
-        assert node.publisher_1.topic_name == '/py_example_topic'."
+        assert node.publisher_1.topic_name == '/py_example_topic'
     finally:
         #Shutdown ROS2 communication
         rclpy.shutdown()
