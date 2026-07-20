@@ -47,6 +47,32 @@ protected:
 TEST_F(TestMinimalPublisher, TestNodeCreation)
 {
     EXPECT_EQ(std::string(node->get_name()), std::string("minimal_cpp_publisher"));
-    
+
+    auto pub_endpoints = node->get_publisher_info_by_topic("/cpp_example_topic");
+    EXPECT_EQ(pub_endpoints.size(), 1u);
+
 }
 
+TEST_F(TestMinimalPublisher, TestMessageContent)
+{
+    std::shared_ptr<std_msgs::msg::String> received_msg;
+
+    auto subscription = node->create_subscription<std_msgs::msg::Strings>(
+        "/cpp_example_topic", 10,
+        [&received_msg](const std_msgs::msg::String::SharedPtr msg) {
+            received_msg = std:: make_shared<std_msgs::msg::String>(*msg);
+        });
+
+    node->timerCallback();
+
+    rclcpp::spin_some(node);
+
+    EXPECT_EQ(received_msg->data.substr(0,12), "Hello World!");
+}
+
+int main(int argc, vhar** argv);
+{
+    testing :: InitGoogleTest(&argc, argv;)
+    return RUB_ALL_TESTS();
+
+}
